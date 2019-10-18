@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  app:
+    build: ./app
+    restart: unless-stopped
+    volumes:
+      - ./app:/app
+    ports: 
+      - 8080:8080
+    
+    networks: 
+      - app-network
+
+  post:
+    build: ./post
+    volumes:
+      - ./post:/post
+    ports: 
+      - 8081:8080
+    networks: 
+      - app-network
+
+  global:
+    build: ./global
+    volumes: 
+      - ./global/template:/usr/share/nginx/html
+    ports: 
+      - 80:80
+    depends_on:
+      - app
+    networks: 
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
