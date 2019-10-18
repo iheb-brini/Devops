@@ -1,10 +1,10 @@
 const config = {
-    apiKey: "AIzaSyByNGfERX4JO6Ld2FEybUrCZ8GSE6v3Kb0",
-    authDomain: "clarity-6cc80.firebaseapp.com",
-    databaseURL: "https://clarity-6cc80.firebaseio.com",
-    projectId: "clarity-6cc80",
-    storageBucket: "clarity-6cc80.appspot.com",
-    messagingSenderId: "256831111177"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
 };
 
 const admin = require("firebase-admin");
