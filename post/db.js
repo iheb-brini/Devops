@@ -1,35 +1,18 @@
-const config = {
-    apiKey: "",
-    authDomain: "",
-    databaseURL: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: ""
-};
+import config from './environment/env';
 
-const admin = require("firebase-admin");
+import { initializeApp, credential as _credential, firestore } from "firebase-admin";
 
-const serviceAccount = require("./firebaseConfig.json");
-
-/* admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://clarity-6cc80.firebaseio.com"
-});
+import serviceAccount from "./environment/firebaseConfig.json";
 
 
-const db = admin.firestore();
-db.collection('users').add({
-    name: 'iheb',
-    age: 22
-}); */
 
 class Fire {
     constructor() {
-        admin.initializeApp({
-            credential: admin.credential.cert(serviceAccount),
-            databaseURL: "https://clarity-6cc80.firebaseio.com"
+        initializeApp({
+            credential: _credential.cert(serviceAccount),
+            databaseURL: config.databaseURL
         });
-        this.db = admin.firestore();
+        this.db = firestore();
     }
     /* BASIC */
     addNode(node, data) {
@@ -50,4 +33,4 @@ class Fire {
     }
 }
 
-module.exports = {Fire};
+export default {Fire};

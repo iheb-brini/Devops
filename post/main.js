@@ -86,32 +86,22 @@ async function gen(imgStream) {
     return pp;
 }
 
-async function test() {
-    classifier();
-}
+
 
 const classifyAll = testImgs()
     .then((imgStream) => {
-        //console.log(imgStream);
-
         gen(imgStream).then((val) => {
-            //console.log(employees);
+
             A = A.sort(bag.comparator);
             B = B.sort(bag.comparator);
-
             A.forEach((element) => {
-                //fire.db.doc('employee/A').collection('10-05-2019').add({'data':element})
                 exec(`cp images/unclassified/${element} images/A`);
             })
             B.forEach(element => {
-                //fire.db.doc('employee/B').collection('10-05-2019').add({'data':element})
                 exec(`cp images/unclassified/${element} images/B`);
             })
-
             let lenA = A.length;
             let lenB = B.length;
-
-
             for (let index = 0; index < lenA / 2; index++) {
                 let couple = tools.popImage(A, 2);
 
@@ -120,9 +110,7 @@ const classifyAll = testImgs()
                 fire.db.doc('employee/A').collection((new Date()).toDateString()).add({
                     'tl': tl
                 })
-
             }
-
             for (let index = 0; index < lenB / 2; index++) {
                 let couple = tools.popImage(B, 2);
 
@@ -132,11 +120,8 @@ const classifyAll = testImgs()
                     'tl': tl
                 })
             }
-            //console.log(A);
-            //console.log(B);
         });
     })
-
 
 console.log('just wait');
 

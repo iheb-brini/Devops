@@ -1,1 +1,4 @@
 */node_modules
+
+/post/environment/env.js
+/post/environment/firebaseConfig.json
